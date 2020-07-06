@@ -22,7 +22,7 @@ import csv
 # In[28]:
 
 
-csvpath = Path('02-Homework_02-Python_Instructions_PyBank_Resources_budget_data.csv')
+csvpath = Path('02-Homework_02-Python_Instructions_PyBank_Resources_budget_data.csv') # problems in establishing path rectified by Instructor KS
 dates = []
 gains_and_losses = []
 line_num = 0
@@ -39,10 +39,10 @@ with open(csvpath, 'r') as csvfile:
     
     # skipping over header and iterating line_num by one
     header = next(csvreader)
-    first_entry = next(csvreader)
+    first_entry = next(csvreader) # extra use of Python 'next' method from Ms. LT
     line_num += 1
     # (firstentry)
-    prev_profit_loss = int(first_entry[1])
+    prev_profit_loss = int(first_entry[1]) 
     initial_entry = prev_profit_loss
     """ 
     having worked this out with the tutor, Ms. LT (on JUL 03, 2020) because of the nature of finding changes and the start for values of changes,
@@ -62,7 +62,7 @@ with open(csvpath, 'r') as csvfile:
         dates.append(date) # this line and line above adding for dates, exp_w_dates empty set established above
         gain_or_loss = int(row[1])
         gains_and_losses.append(gain_or_loss) # this line and line directly above adding for profit/losses, aggregate empty set established above
-        change =  gain_or_loss - prev_profit_loss
+        change =  gain_or_loss - prev_profit_loss # structure of looping for values in change from Ms. LT
         delta.append(change)
         prev_profit_loss = gain_or_loss
         # in lines above, row are iterated so that a value change is calculated from difference of gain_or_loss and prev_profit_loss
@@ -87,7 +87,7 @@ print(average_delta)
 # In[21]:
 
 
-tally = 0
+tally = 0 # idea for tally from Lesson 6 refresher notebook
 for item in gains_and_losses:
     tally += item
 print(tally)
@@ -115,7 +115,7 @@ loss_maximum = 0
 # In[10]:
 
 
-for entry in delta:
+for entry in delta: #structore of finding maximum and minimum from Lesson 6 refresher jupyter notebook
     if loss_maximum == 0:
         loss_maximum = entry
     if entry > gain_maximum:
@@ -190,7 +190,7 @@ with open(output_path, 'w'):
     print(f"Greatest Increase in Profits: {datemax} {gain_maximum}")
     print(f"Greatest Decrease in Profits: {datemin} {loss_maximum}")
 
-07 06 2020 0542 EDT
+07 06 2020 1800 EDT
 # In[ ]:
 
 
