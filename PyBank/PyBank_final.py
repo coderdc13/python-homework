@@ -4,7 +4,7 @@
 # In[1]:
 
 
-# 99.99% of work from other sources, including lesson 6 refresher jupyter notebook, python iii zoom videorecording, and JUL 03 2020 tutorial session with Ms. LT
+# 99.99% of work from other sources, including lesson 6 refresher jupyter notebook, python iii zoom videorecording, and JUL 03 2020 FINTECH tutorial session with Ms. LT
 
 
 # In[2]:
@@ -19,7 +19,7 @@ from pathlib import Path
 import csv
 
 
-# In[28]:
+# In[4]:
 
 
 csvpath = Path('02-Homework_02-Python_Instructions_PyBank_Resources_budget_data.csv') # problems in establishing path rectified by Instructor KS
@@ -39,7 +39,7 @@ with open(csvpath, 'r') as csvfile:
     
     # skipping over header and iterating line_num by one
     header = next(csvreader)
-    first_entry = next(csvreader) # extra use of Python 'next' method from Ms. LT
+    first_entry = next(csvreader) # extra use of Python 'next' method directly from Ms. LT (FINTECH TUTOR)
     line_num += 1
     # (firstentry)
     prev_profit_loss = int(first_entry[1]) 
@@ -62,7 +62,7 @@ with open(csvpath, 'r') as csvfile:
         dates.append(date) # this line and line above adding for dates, exp_w_dates empty set established above
         gain_or_loss = int(row[1])
         gains_and_losses.append(gain_or_loss) # this line and line directly above adding for profit/losses, aggregate empty set established above
-        change =  gain_or_loss - prev_profit_loss # structure of looping for values in change from Ms. LT
+        change =  gain_or_loss - prev_profit_loss # structure of looping for values in change directly from Ms. LT
         delta.append(change)
         prev_profit_loss = gain_or_loss
         # in lines above, row are iterated so that a value change is calculated from difference of gain_or_loss and prev_profit_loss
@@ -74,7 +74,7 @@ with open(csvpath, 'r') as csvfile:
     print(total_number_of_months)
 
 
-# In[29]:
+# In[5]:
 
 
 net_delta_aggregate = 0
@@ -84,7 +84,7 @@ average_delta = round(net_delta_aggregate/len(dates), 2)
 print(average_delta)
 
 
-# In[21]:
+# In[6]:
 
 
 tally = 0 # idea for tally from Lesson 6 refresher notebook
@@ -93,13 +93,13 @@ for item in gains_and_losses:
 print(tally)
 
 
-# In[22]:
+# In[7]:
 
 
 grand_total = tally + initial_entry
 
 
-# In[23]:
+# In[8]:
 
 
 print(grand_total)
@@ -115,7 +115,7 @@ loss_maximum = 0
 # In[10]:
 
 
-for entry in delta: #structore of finding maximum and minimum from Lesson 6 refresher jupyter notebook
+for entry in delta: #structure of finding maximum and minimum from Lesson 6 refresher jupyter notebook
     if loss_maximum == 0:
         loss_maximum = entry
     if entry > gain_maximum:
@@ -136,61 +136,76 @@ print(loss_maximum)
 print(gain_maximum)
 
 
-# In[13]:
+# In[21]:
 
 
 datemax = dates[delta.index(1926159)]
 
 
-# In[14]:
+# In[22]:
 
 
 datemin = dates[delta.index(-2196167)]
 
 
-# In[32]:
+# In[23]:
 
 
 print(datemax)
 print(datemin)
 
 
-# In[59]:
+# In[73]:
 
 
 headline = "Financial Analysis"
 
 
-# In[60]:
+# In[74]:
 
 
 # saving 0020 EDT
 
 
-# In[61]:
+# In[76]:
 
 
-line_break = "----------------------------"
+output_path = Path('output.txt') #changing to txt
 
 
-# In[62]:
+# In[81]:
 
 
-output_path = Path('output.csv')
+with open(output_path, 'w') as txt_file:
+    txt_file.write("Financial Analysis \n")
+    txt_file.write("---------------------------- \n")
+    txt_file.write(f"Total: ${grand_total} \n")
+    txt_file.write(f"Average Change: ${average_delta} \n")
+    txt_file.write(f"Greatest Increase in Profits: {datemax} (${gain_maximum}) \n")
+    txt_file.write(f"Greatest Decrease in Profits: {datemin} (${loss_maximum}) \n")
+    # txt_file.write("financial Analysis") thanks to Instr. KS for explaining how to do output
 
 
-# In[63]:
+# In[82]:
 
 
-with open(output_path, 'w'):
+# printing for results on the record
+with open(output_path, 'w') as txt_file:
     print("Financial Analysis")
-    print(line_break)
+    print("----------------------------")
     print(f"Total: ${grand_total}")
     print(f"Average Change: ${average_delta}")
-    print(f"Greatest Increase in Profits: {datemax} {gain_maximum}")
-    print(f"Greatest Decrease in Profits: {datemin} {loss_maximum}")
+    print(f"Greatest Increase in Profits: {datemax} (${gain_maximum})")
+    print(f"Greatest Decrease in Profits: {datemin} (${loss_maximum})")
+    # also thanks to Instr. KS for double checking that we do not need to put non-code in a separate folder, saved a lot of time...
 
-07 06 2020 1800 EDT
+07 06 2020 2246 EDT
+# In[ ]:
+
+
+
+
+
 # In[ ]:
 
 
